@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib/",
+    "inlineSourceMap": true,
+    "lib": ["ES2020", "DOM"],
+    "target": "es2017",
+    "module": "commonjs",
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "types": ["node", "@types/jest"]
+  },
+  "include": ["./test/**/*.ts", "./src/**/*.ts"]
+}

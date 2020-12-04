@@ -1,0 +1,63 @@
+{
+  "name": "key-value-endpoint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "start": "node lib/index.js",
+    "build": "run-s clean compile-prod",
+    "clean": "rimraf ./lib",
+    "compile": "tsc  --build tsconfig.build.json --incremental",
+    "compile-prod": "tsc --build tsconfig.prod.json",
+    "test": "jest",
+    "lint": "eslint --ext .ts --ignore-path .gitignore .",
+    "lint-fix": "npm run lint -- --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-s build lint",
+      "pre-push": "run-s test"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mgrybyk/key-value-endpoint.git"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/hapi__joi": "^17.1.4",
+    "@types/jest": "^26.0.7",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/ws": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "get-port": "^5.1.1",
+    "got": "^11.8.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.1.3",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@cloudnative/health-connect": "^2.1.0",
+    "@hapi/joi": "^17.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-status": "^1.4.2",
+    "mongoose": "^5.11.3",
+    "winston": "^3.3.3",
+    "ws": "^7.4.0"
+  }
+}
