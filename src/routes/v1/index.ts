@@ -1,7 +1,7 @@
-import * as express from 'express'
+import { Router } from 'express'
 
-import { storeRoute } from './store-config'
+import { storeRoute } from './store'
 
-export const routes = express.Router()
+export const routes = Router()
 
 routes.use('/store', storeRoute)

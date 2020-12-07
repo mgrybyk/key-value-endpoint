@@ -1,6 +1,6 @@
 import { app } from './app'
-import { wsServerInit } from './ws'
-import { dbConnect } from './config/db'
+import { wsServerInit } from './ws-routes/wss'
+import { dbConnect, dbClose } from './config/db'
 import config from './config/config'
 import { logger } from './config/logger'
 
@@ -23,8 +23,11 @@ process.on('unhandledRejection', unexpectedErrorHandler)
 
 process.on('SIGTERM', () => {
     logger.info('SIGTERM received')
+    dbClose()
+    if (wss) {
+        wss.close()
+    }
     if (server) {
         server.close()
-        wss.close()
     }
 })
